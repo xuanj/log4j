@@ -1,39 +1,13 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package org.apache.log4j.helpers;
 
 /**
- * This class used to output log statements from within the log4j package.
- * 
- * <p>
- * Log4j components cannot make log4j logging calls. However, it is sometimes
- * useful for the user to learn about what log4j is doing. You can enable log4j
- * internal logging by defining the <b>log4j.configDebug</b> variable.
- * 
- * <p>
- * All log4j internal debug calls go to <code>System.out</code> where as
- * internal error messages are sent to <code>System.err</code>. All internal
- * messages are prepended with the string "log4j: ".
- * 
- * @since 0.8.2
- * @author Ceki G&uuml;lc&uuml;
+ * log4j 内部日志 直接copy LogLog
+ * 修改输出前缀
+ * @author xuanjian
+ * 2017年2月10日
  */
-public class LogLog {
+public class LogLogX {
+	
 
 	/**
 	 * Defining this value makes log4j print log4j-internal debug statements to
@@ -61,16 +35,16 @@ public class LogLog {
 	 */
 	public static final String CONFIG_DEBUG_KEY = "log4j.configDebug";
 
-	protected static boolean debugEnabled = false;
+	protected static boolean debugEnabled = true;
 
 	/**
 	 * In quietMode not even errors generate any output.
 	 */
 	private static boolean quietMode = false;
 
-	private static final String PREFIX = "log4j: ";
-	private static final String ERR_PREFIX = "log4j:ERROR ";
-	private static final String WARN_PREFIX = "log4j:WARN ";
+	private static final String PREFIX = "log4jx: ";
+	private static final String ERR_PREFIX = "log4jx:ERROR ";
+	private static final String WARN_PREFIX = "log4jx:WARN ";
 
 	static {
 		String key = OptionConverter.getSystemProperty(DEBUG_KEY, null);
@@ -150,7 +124,7 @@ public class LogLog {
 	 *            A true for not
 	 */
 	public static void setQuietMode(boolean quietMode) {
-		LogLog.quietMode = quietMode;
+		LogLogX.quietMode = quietMode;
 	}
 
 	/**

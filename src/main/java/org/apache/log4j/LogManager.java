@@ -26,6 +26,7 @@ import org.apache.log4j.spi.NOPLoggerRepository;
 import org.apache.log4j.helpers.Loader;
 import org.apache.log4j.helpers.OptionConverter;
 import org.apache.log4j.helpers.LogLog;
+import org.apache.log4j.helpers.LogLogX;
 
 import java.net.URL;
 import java.net.MalformedURLException;
@@ -81,6 +82,7 @@ public class LogManager {
 	static {
 		// By default we use a DefaultRepositorySelector which always returns
 		// 'h'.
+		LogLogX.debug("LogManager 静态初始化开始");
 		Hierarchy h = new Hierarchy(new RootLogger(Level.DEBUG));
 		repositorySelector = new DefaultRepositorySelector(h);
 
